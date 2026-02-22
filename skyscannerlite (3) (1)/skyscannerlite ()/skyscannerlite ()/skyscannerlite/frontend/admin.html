@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Admin Panel - Flight Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/918072817958?text=Hi%21%20Admin%20-%20I%20need%20help" 
+   class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Admin Support</span>
+</a>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <i class="fas fa-plane"></i>
+            <span>Admin Panel</span>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="admin.html" class="active"><i class="fas fa-user-shield"></i> Admin</a></li>
+            <li><a href="user.html"><i class="fas fa-user"></i> User</a></li>
+            <li><a href="contact.html"><i class="fas fa-headset"></i> Support</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Admin Login Section -->
+<div id="adminLoginSection" class="card login-card">
+    <h2><i class="fas fa-lock"></i> Admin Login</h2>
+    <div class="login-form">
+        <div class="input-group">
+            <label for="adminUsername"><i class="fas fa-user"></i> Username</label>
+            <input type="text" id="adminUsername" placeholder="Enter username" value="admin">
+        </div>
+        <div class="input-group">
+            <label for="adminPassword"><i class="fas fa-key"></i> Password</label>
+            <input type="password" id="adminPassword" placeholder="Enter password" value="admin123">
+        </div>
+        <button onclick="adminLogin()" class="btn btn-primary">
+            <i class="fas fa-sign-in-alt"></i> Login to Dashboard
+        </button>
+    </div>
+</div>
+
+<!-- Admin Dashboard (Hidden by default) -->
+<div id="adminDashboard" style="display: none;">
+    <div class="dashboard-header">
+        <h2><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h2>
+        <button onclick="adminLogout()" class="btn btn-danger">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <i class="fas fa-plane"></i>
+            <h3>Total Flights</h3>
+            <span id="totalFlights">0</span>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-chair"></i>
+            <h3>Total Seats</h3>
+            <span id="totalSeats">0</span>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-ticket-alt"></i>
+            <h3>Total Bookings</h3>
+            <span id="totalBookings">0</span>
+        </div>
+    </div>
+
+    <!-- ADD FLIGHT -->
+    <div class="card">
+        <h2><i class="fas fa-plus-circle"></i> Add New Flight</h2>
+        <div class="form-grid">
+            <div class="input-group">
+                <label for="flightNumber">Flight Number <span class="required">*</span></label>
+                <input type="text" id="flightNumber" placeholder="e.g., AI-2024">
+            </div>
+            <div class="input-group">
+                <label for="source">Source City <span class="required">*</span></label>
+                <input type="text" id="source" placeholder="e.g., Mumbai">
+            </div>
+            <div class="input-group">
+                <label for="destination">Destination City <span class="required">*</span></label>
+                <input type="text" id="destination" placeholder="e.g., Delhi">
+            </div>
+            <div class="input-group">
+                <label for="departureTime">Departure Time <span class="required">*</span></label>
+                <input type="datetime-local" id="departureTime">
+            </div>
+            <div class="input-group">
+                <label for="arrivalTime">Arrival Time <span class="required">*</span></label>
+                <input type="datetime-local" id="arrivalTime">
+            </div>
+            <div class="input-group">
+                <label for="date">Flight Date <span class="required">*</span></label>
+                <input type="date" id="date">
+            </div>
+        </div>
+        <button onclick="addFlight()" class="btn btn-success">
+            <i class="fas fa-plus"></i> Add Flight
+        </button>
+    </div>
+
+    <!-- DELETE FLIGHT -->
+    <div class="card">
+        <h2><i class="fas fa-trash"></i> Delete Flight</h2>
+        <div class="form-group">
+            <div class="input-group">
+                <label for="deleteFlightId">Flight ID to Delete <span class="required">*</span></label>
+                <input type="number" id="deleteFlightId" placeholder="Enter Flight ID (e.g., 1)">
+            </div>
+            <button onclick="deleteFlight()" class="btn btn-danger">
+                <i class="fas fa-trash"></i> Delete Flight
+            </button>
+        </div>
+    </div>
+
+    <!-- ADD SEAT -->
+    <div class="card">
+        <h2><i class="fas fa-chair"></i> Add New Seat</h2>
+        <div class="form-grid">
+            <div class="input-group">
+                <label for="seatFlightId">Flight ID <span class="required">*</span></label>
+                <input type="number" id="seatFlightId" placeholder="Enter Flight ID">
+            </div>
+            <div class="input-group">
+                <label for="seatNumber">Seat Number <span class="required">*</span></label>
+                <input type="text" id="seatNumber" placeholder="e.g., A1, B2">
+            </div>
+            <div class="input-group">
+                <label for="price">Seat Price (₹) <span class="required">*</span></label>
+                <input type="number" id="price" placeholder="e.g., 5000">
+            </div>
+        </div>
+        <button onclick="addSeat()" class="btn btn-success">
+            <i class="fas fa-plus"></i> Add Seat
+        </button>
+    </div>
+
+    <!-- DELETE SEAT -->
+    <div class="card">
+        <h2><i class="fas fa-trash"></i> Delete Seat</h2>
+        <div class="form-group">
+            <div class="input-group">
+                <label for="deleteSeatId">Seat ID to Delete <span class="required">*</span></label>
+                <input type="number" id="deleteSeatId" placeholder="Enter Seat ID">
+            </div>
+            <button onclick="deleteSeat()" class="btn btn-danger">
+                <i class="fas fa-trash"></i> Delete Seat
+            </button>
+        </div>
+    </div>
+
+    <!-- VIEW ALL BOOKINGS -->
+    <div class="card">
+        <h2><i class="fas fa-ticket-alt"></i> All Bookings</h2>
+        <button onclick="viewBookings()" class="btn btn-primary">
+            <i class="fas fa-sync"></i> Refresh Bookings
+        </button>
+        <div id="bookingResults" class="results-table"></div>
+    </div>
+</div>
+
+<script src="admin.js"></script>
+<script>
+// Mobile menu toggle
+document.getElementById('menuToggle').addEventListener('click', function() {
+    document.getElementById('navMenu').classList.toggle('active');
+});
+</script>
+</body>
+</html>

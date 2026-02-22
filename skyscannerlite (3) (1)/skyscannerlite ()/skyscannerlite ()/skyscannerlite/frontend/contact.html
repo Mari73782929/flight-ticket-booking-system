@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Help & Support - Flight Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/918072817958?text=Hi%21%20I%20need%20help%20with%3A%20" 
+   class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Chat with Support</span>
+</a>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <i class="fas fa-plane"></i>
+            <span>Help & Support</span>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="user.html"><i class="fas fa-user"></i> User</a></li>
+            <li><a href="admin.html"><i class="fas fa-user-shield"></i> Admin</a></li>
+            <li><a href="contact.html" class="active"><i class="fas fa-headset"></i> Support</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Quick Contact -->
+<div class="card contact-card">
+    <h2><i class="fas fa-phone-alt"></i> Quick Contact</h2>
+    <div class="contact-info">
+        <div class="contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <h3>WhatsApp Support</h3>
+            <br>
+            <a href="https://wa.me/918072817958" target="_blank" class="btn btn-success">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Report Problem Form -->
+<div class="card">
+    <h2><i class="fas fa-exclamation-triangle"></i> Report a Problem</h2>
+    <form id="problemForm" onsubmit="sendProblem(event)">
+        <div class="form-grid">
+            <div class="input-group">
+                <label for="problemName">Your Full Name <span class="required">*</span></label>
+                <input type="text" id="problemName" placeholder="Enter your name" required>
+            </div>
+            <div class="input-group">
+                <label for="problemEmail">Email Address <span class="required">*</span></label>
+                <input type="email" id="problemEmail" placeholder="Enter your email" required>
+            </div>
+            <div class="input-group">
+                <label for="problemType">Problem Type <span class="required">*</span></label>
+                <select id="problemType" required>
+                    <option value="">Select Problem Type</option>
+                    <option value="Booking Issue">Booking Issue</option>
+                    <option value="Cancellation">Cancellation Problem</option>
+                    <option value="Payment Issue">Payment Issue</option>
+                    <option value="Technical Issue">Technical Issue</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="input-group full-width">
+                <label for="problemDescription">Describe Your Problem <span class="required">*</span></label>
+                <textarea id="problemDescription" placeholder="Please describe your problem in detail..." rows="5" required></textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i> Send via WhatsApp
+        </button>
+    </form>
+</div>
+
+<!-- FAQ Section -->
+<div class="card">
+    <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+    <div class="faq-list">
+        <div class="faq-item">
+            <div class="faq-question">
+                <i class="fas fa-chevron-right"></i>
+                <h3>How to book a flight?</h3>
+            </div>
+            <p>Go to User Portal, enter source and destination in search, find your flight, note the Flight ID and Seat ID, then use the Book Ticket section.</p>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <i class="fas fa-chevron-right"></i>
+                <h3>How to cancel booking?</h3>
+            </div>
+            <p>Go to User Portal, enter your Booking ID in the Cancel Booking section and click Cancel.</p>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <i class="fas fa-chevron-right"></i>
+                <h3>How to contact support?</h3>
+            </div>
+            <p>Click on the WhatsApp button or use the Report Problem form above. We'll respond within minutes.</p>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <i class="fas fa-chevron-right"></i>
+                <h3>What are your support hours?</h3>
+            </div>
+            <p>We provide 24/7 support via WhatsApp. Feel free to message us anytime!</p>
+        </div>
+    </div>
+</div>
+
+<script>
+function sendProblem(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('problemName').value;
+    const email = document.getElementById('problemEmail').value;
+    const type = document.getElementById('problemType').value;
+    const description = document.getElementById('problemDescription').value;
+    
+    const message = `*Problem Report*%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Type:* ${type}%0A*Description:* ${description}`;
+    
+    window.open(`https://wa.me/918072817958?text=${message}`, '_blank');
+}
+
+// Mobile menu toggle
+document.getElementById('menuToggle').addEventListener('click', function() {
+    document.getElementById('navMenu').classList.toggle('active');
+});
+</script>
+</body>
+</html>

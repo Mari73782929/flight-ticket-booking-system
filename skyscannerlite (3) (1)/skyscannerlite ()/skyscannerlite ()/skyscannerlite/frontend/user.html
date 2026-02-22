@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>User Portal - Flight Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/918072817958?text=Hi%21%20I%20want%20to%20book%20a%20flight" 
+   class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Book via WhatsApp</span>
+</a>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <i class="fas fa-plane"></i>
+            <span>User Portal</span>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="user.html" class="active"><i class="fas fa-user"></i> User</a></li>
+            <li><a href="admin.html"><i class="fas fa-user-shield"></i> Admin</a></li>
+            <li><a href="contact.html"><i class="fas fa-headset"></i> Support</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- SEARCH FLIGHTS -->
+<div class="card">
+    <h2><i class="fas fa-search"></i> Search Available Flights</h2>
+    <div class="form-grid">
+        <div class="input-group">
+            <label for="searchSource"><i class="fas fa-map-marker-alt"></i> From (Source)</label>
+            <input type="text" id="searchSource" placeholder="e.g., Mumbai, Delhi, Chennai">
+        </div>
+        <div class="input-group">
+            <label for="searchDestination"><i class="fas fa-map-marker-alt"></i> To (Destination)</label>
+            <input type="text" id="searchDestination" placeholder="e.g., Bangalore, Kolkata">
+        </div>
+    </div>
+    <button onclick="searchFlights()" class="btn btn-primary">
+        <i class="fas fa-search"></i> Search Flights
+    </button>
+    <div id="flightResults" class="results-table"></div>
+</div>
+
+<!-- BOOK TICKET -->
+<div class="card">
+    <h2><i class="fas fa-ticket-alt"></i> Book a Ticket</h2>
+    <div class="form-grid">
+        <div class="input-group">
+            <label for="bookingFlightId">Flight ID <span class="required">*</span></label>
+            <input type="number" id="bookingFlightId" placeholder="Enter Flight ID from search">
+        </div>
+        <div class="input-group">
+            <label for="bookingSeatId">Seat ID <span class="required">*</span></label>
+            <input type="number" id="bookingSeatId" placeholder="Enter Seat ID">
+        </div>
+        <div class="input-group">
+            <label for="passengerName">Passenger Name <span class="required">*</span></label>
+            <input type="text" id="passengerName" placeholder="Enter your full name">
+        </div>
+        <div class="input-group">
+            <label for="passengerEmail">Email Address <span class="required">*</span></label>
+            <input type="email" id="passengerEmail" placeholder="Enter your email">
+        </div>
+    </div>
+    <button onclick="bookTicket()" class="btn btn-success">
+        <i class="fas fa-check"></i> Confirm Booking
+    </button>
+</div>
+
+<!-- CANCEL BOOKING -->
+<div class="card">
+    <h2><i class="fas fa-times-circle"></i> Cancel Booking</h2>
+    <div class="form-group">
+        <div class="input-group">
+            <label for="cancelBookingId">Booking ID to Cancel <span class="required">*</span></label>
+            <input type="number" id="cancelBookingId" placeholder="Enter your Booking ID">
+        </div>
+        <button onclick="cancelBooking()" class="btn btn-danger">
+            <i class="fas fa-ban"></i> Cancel Booking
+        </button>
+    </div>
+</div>
+
+<!-- VIEW MY BOOKINGS -->
+<div class="card">
+    <h2><i class="fas fa-list"></i> My Bookings</h2>
+    <button onclick="viewBookings()" class="btn btn-primary">
+        <i class="fas fa-sync"></i> View My Bookings
+    </button>
+    <div id="bookingResults" class="results-table"></div>
+</div>
+
+<script src="user.js"></script>
+<script>
+// Mobile menu toggle
+document.getElementById('menuToggle').addEventListener('click', function() {
+    document.getElementById('navMenu').classList.toggle('active');
+});
+</script>
+</body>
+</html>

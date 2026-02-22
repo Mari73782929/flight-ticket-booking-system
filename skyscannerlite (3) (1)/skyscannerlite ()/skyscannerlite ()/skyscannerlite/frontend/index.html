@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Flight Booking System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/918072817958?text=Hi%21%20I%20need%20help%20with%20flight%20booking" 
+   class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Need Help? Chat with us!</span>
+</a>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <i class="fas fa-plane"></i>
+            <span>Flight Booking</span>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="user.html"><i class="fas fa-user"></i> User</a></li>
+            <li><a href="admin.html"><i class="fas fa-user-shield"></i> Admin</a></li>
+            <li><a href="contact.html"><i class="fas fa-headset"></i> Support</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section with Background -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to Flight Booking System</h1>
+        <p>Book your flights with ease and comfort</p>
+        <div class="hero-buttons">
+            <a href="user.html" class="btn btn-primary"><i class="fas fa-ticket-alt"></i> Book Now</a>
+            <a href="admin.html" class="btn btn-secondary"><i class="fas fa-lock"></i> Admin Login</a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="feature-card">
+        <i class="fas fa-plane-departure"></i>
+        <h3>Easy Booking</h3>
+        <p>Book flights quickly with our simple interface</p>
+    </div>
+    <div class="feature-card">
+        <i class="fas fa-clock"></i>
+        <h3>24/7 Support</h3>
+        <p>Get help anytime via WhatsApp</p>
+    </div>
+    <div class="feature-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Secure Payment</h3>
+        <p>Your transactions are safe with us</p>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section">
+    <div class="about-content">
+        <h2>Why Choose Us?</h2>
+        <p>We provide the best flight booking experience with real-time availability and instant confirmation.</p>
+        <div class="stats">
+            <div class="stat">
+                <i class="fas fa-smile"></i>
+                <h4>1000+</h4>
+                <p>Happy Customers</p>
+            </div>
+            <div class="stat">
+                <i class="fas fa-plane"></i>
+                <h4>500+</h4>
+                <p>Daily Flights</p>
+            </div>
+            <div class="stat">
+                <i class="fas fa-city"></i>
+                <h4>100+</h4>
+                <p>Destinations</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Mobile menu toggle
+document.getElementById('menuToggle').addEventListener('click', function() {
+    document.getElementById('navMenu').classList.toggle('active');
+});
+</script>
+</body>
+</html>
